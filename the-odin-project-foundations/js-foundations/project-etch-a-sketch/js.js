@@ -1,7 +1,7 @@
 function createGrid(num) {
     for (let i = 0; i < num*num; i++) {
         let div = document.createElement("div");
-        let sideLength = 960/num;
+        let sideLength = 500/num;
         div.style.width = `${sideLength}px`;
         div.style.height = `${sideLength}px`;
         
