@@ -99,5 +99,20 @@ function getAverageAge(users) {
     return total/divisor
 }
 
+// Create keyed object from array 
+
+function groupById(users) {
+
+    let newObject = {};
+    return users.reduce((sum,item) => {
+        newObject[item.id] = item;
+        return newObject
+    },0)
+}
+
+
+
+
+
 
 
