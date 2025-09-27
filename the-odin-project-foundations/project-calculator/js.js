@@ -26,7 +26,13 @@ function operate(numberOne,numberTwo,operator) {
     }
 }
 
-
 let numberOne;
 let operator;
 let numberTwo;
+
+const digits = document.querySelectorAll(".num")
+const display = document.querySelector(".display")
+
+digits.forEach(btn => {
+    btn.addEventListener("click", e => display.textContent += e.target.textContent)
+})
