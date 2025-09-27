@@ -80,3 +80,11 @@ let usersMapped = users.map(item => {
     delete item.surname
     return item
 })
+
+// Sort users by age 
+
+function sortByAge(users) {
+    users.sort((a,b) => a.age - b.age)
+}
+
+
