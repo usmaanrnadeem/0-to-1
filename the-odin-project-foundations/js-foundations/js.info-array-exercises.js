@@ -68,23 +68,36 @@ function unique(arr) {
 }
 
 
-// Map to names 
+// Map to names - ***COMMENTED TO AVOID REF ERRORS***
 
-let names = users.map(obj => obj.name)
+// let names = users.map(obj => obj.name)
 
-// Map to objects 
+// Map to objects - ***COMMENTED TO AVOID REF ERRORS***
 
-let usersMapped = users.map(item => {
-    item.fullName = item.name + " " + item.surname;
-    delete item.name 
-    delete item.surname
-    return item
-})
+// let usersMapped = users.map(item => {
+//     item.fullName = item.name + " " + item.surname;
+//     delete item.name 
+//     delete item.surname
+//     return item
+// })
 
 // Sort users by age 
 
 function sortByAge(users) {
     users.sort((a,b) => a.age - b.age)
 }
+
+// Get average age 
+
+function getAverageAge(users) {
+    let total = 0;
+    let divisor = 0;
+    for (let item of users) {
+        total += item.age;
+        divisor += 1;
+    }
+    return total/divisor
+}
+
 
 
