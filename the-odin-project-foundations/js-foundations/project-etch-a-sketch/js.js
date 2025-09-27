@@ -85,7 +85,9 @@ createGrid(16);
 
 btn.addEventListener("click", () => {    
 
-    while (!(0 < numOfSquares && numOfSquares < 100)) {
+    numOfSquares = prompt("How many squares (1-100)?");
+    
+    if (!(0 < numOfSquares && numOfSquares < 100)) {
         numOfSquares = prompt("How many squares (1-100)?");
     }
 
