@@ -17,13 +17,20 @@ function divide(a,b) {
 function operate(numberOne,numberTwo,operator) {
     if (operator == "+") {
         return add(numberOne,numberTwo)
-    } else if (operate == "-") {
+    } else if (operator == "-") {
         return subtract(numberOne,numberTwo)
-    } else if (operate == '*') {
+    } else if (operator == '*') {
         return multiply(numberOne,numberTwo) 
-    } else if (operate == '/') {
+    } else if (operator == '/') {
         return divide(numberOne,numberTwo)
     }
+}
+
+function computePending() {
+    numberTwo = displayInput;
+    answer = operate(numberOne,numberTwo,currentOperation);
+    display.textContent = answer;
+    numberOne = display.textContent;
 }
 
 let numberOne;
@@ -33,6 +40,7 @@ let displayInput;
 let currentOperation;
 let answer;
 let firstDigitAfterOperation = false;
+let clickEvent = new Event('click');
 
 const digits = document.querySelectorAll(".num");
 const display = document.querySelector(".display");
@@ -52,6 +60,11 @@ digits.forEach(btn => {
 })
 
 operations.forEach(btn => {
+
+    if (!isNaN(Number(numberOne)) && (operator == "+" || operator == "-" || operator == "*" || operator == "/")) {
+        computePending();
+    }
+
     btn.addEventListener("click", e => {
         numberOne = displayInput;
         currentOperation = e.target.textContent;
@@ -59,9 +72,8 @@ operations.forEach(btn => {
     })
 })
 
-equals.addEventListener("click", e => {
-    numberTwo = displayInput;
-    answer = operate(numberOne,numberTwo,currentOperation);
-    display.textContent = answer;
-    currentOperation = "";
+equals.addEventListener("click", () => {
+    if (currentOperation) {
+        computePending()
+    }
 })
