@@ -37,16 +37,6 @@ function operate(numberOne,numberTwo,operator) {
     operator = null;
 }
 
-function computePending() {
-    if (!numberTwo || displayInput !== numberTwo || Number(display.textContent) !== numberTwo) {
-        numberTwo = Number(displayInput)
-    }
-    answer = operate(numberOne,numberTwo,currentOperation);
-    display.textContent = answer;
-    displayInput = answer;
-    numberOne = answer;
-}
-
 let numberOne;
 let operator;
 let numberTwo;
