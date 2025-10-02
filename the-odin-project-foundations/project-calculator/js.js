@@ -15,22 +15,36 @@ function divide(a,b) {
 }
 
 function operate(numberOne,numberTwo,operator) {
+
+    let answer;
+
     if (operator == "+") {
-        return add(numberOne,numberTwo)
+        answer = add(numberOne,numberTwo)
     } else if (operator == "-") {
-        return subtract(numberOne,numberTwo)
+        answer = subtract(numberOne,numberTwo)
     } else if (operator == '*') {
-        return multiply(numberOne,numberTwo) 
+        answer = multiply(numberOne,numberTwo) 
     } else if (operator == '/') {
-        return divide(numberOne,numberTwo)
+        answer = divide(numberOne,numberTwo)
     }
+
+    display.textContent = answer;
+
+    numberOne = answer;
+
+    numberTwo = null;
+
+    operator = null;
 }
 
 function computePending() {
-    numberTwo = displayInput;
+    if (!numberTwo || displayInput !== numberTwo || Number(display.textContent) !== numberTwo) {
+        numberTwo = Number(displayInput)
+    }
     answer = operate(numberOne,numberTwo,currentOperation);
     display.textContent = answer;
-    numberOne = display.textContent;
+    displayInput = answer;
+    numberOne = answer;
 }
 
 let numberOne;
@@ -47,11 +61,16 @@ const display = document.querySelector(".display");
 const operations = document.querySelectorAll(".operation");
 const equals = document.querySelector(".equals");
 
+const one = document.querySelector(".numberOne")
+const two = document.querySelector(".numberTwo")
+const container = document.querySelector(".container")
+// 12 + 5 + 9 = 14
+
+
 digits.forEach(btn => {
     btn.addEventListener("click", e => {
         if (firstDigitAfterOperation == true) {
             display.textContent = "";
-            displayInput = 0;
             firstDigitAfterOperation = false
         }
         display.textContent += e.target.textContent
@@ -61,11 +80,10 @@ digits.forEach(btn => {
 
 operations.forEach(btn => {
 
-    if (!isNaN(Number(numberOne)) && (operator == "+" || operator == "-" || operator == "*" || operator == "/")) {
-        computePending();
-    }
-
     btn.addEventListener("click", e => {
+        if (currentOperation) {
+            computePending();
+        }
         numberOne = displayInput;
         currentOperation = e.target.textContent;
         firstDigitAfterOperation = true; 
@@ -76,4 +94,9 @@ equals.addEventListener("click", () => {
     if (currentOperation) {
         computePending()
     }
+})
+
+container.addEventListener("click", () => {
+    one.textContent = numberOne;
+    two.textContent = numberTwo;
 })
