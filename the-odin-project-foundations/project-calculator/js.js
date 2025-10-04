@@ -55,20 +55,12 @@ let answer;
 let firstDigitAfterOperation;
 let firstDigitAfterEquals;
 let helper;
-// let displayInput;
 
 const digits = document.querySelectorAll(".num");
 const display = document.querySelector(".display");
 const operations = document.querySelectorAll(".operation");
 const equals = document.querySelector(".equals");
 const clearBtn = document.querySelector(".clear");
-
-// For testing
-const one = document.querySelector(".numberOne")
-const two = document.querySelector(".numberTwo")
-const container = document.querySelector(".container")
-// 12 + 7 - 1 = 18
-
 
 digits.forEach(btn => {
     btn.addEventListener("click", e => {
@@ -108,7 +100,7 @@ operations.forEach(btn => {
             operator = e.target.textContent;
         }
         firstDigitAfterOperation = true; 
-        
+
         operator = e.target.textContent
     })
 })
@@ -138,4 +130,4 @@ equals.addEventListener("click", () => {
 
 clearBtn.addEventListener("click", () => clear())
 
-//  Test
+
