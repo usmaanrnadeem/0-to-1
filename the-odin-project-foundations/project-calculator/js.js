@@ -54,6 +54,7 @@ let numberTwo;
 let answer;
 let firstDigitAfterOperation;
 let firstDigitAfterEquals;
+let helper;
 // let displayInput;
 
 const digits = document.querySelectorAll(".num");
@@ -75,15 +76,16 @@ digits.forEach(btn => {
             display.textContent = "";
             firstDigitAfterOperation = false;
             numberTwo = "fill me"
+            helper = true
         }
 
-        if (firstDigitAfterEquals == true) {
-            display.textContent = "";
-            numberOne = null;
-            numberTwo = null;
-            operator = null;
-            firstDigitAfterEquals = false;
+        if (firstDigitAfterEquals == true && helper == false) {
+            clear()
+            console.log('Problem')
         }
+
+        helper = false;
+        
         display.textContent += e.target.textContent
     })
 })
@@ -97,19 +99,24 @@ operations.forEach(btn => {
             numberTwo = display.textContent
         }
         
-        if (!operator) {
-            operator = e.target.textContent;
+        if (numberTwo == "fill me") {
+            numberTwo = display.textContent;
         }
-        
+
         if (numberOne && numberTwo && operator) {
             [numberOne, numberTwo, operator] = operate(numberOne,numberTwo,operator);
             operator = e.target.textContent;
         }
         firstDigitAfterOperation = true; 
+        
+        operator = e.target.textContent
     })
 })
 
 equals.addEventListener("click", () => {
+    console.log(numberOne)
+    console.log(numberTwo)
+    console.log(answer)
     if (numberOne && numberTwo && operator) {
         if (numberTwo == "fill me") {
             numberTwo = display.textContent;
@@ -124,7 +131,7 @@ equals.addEventListener("click", () => {
     } 
 
     numberOne = display.textContent;
-    numberTwo = null;
+    numberTwo = "fill me";
 
     firstDigitAfterEquals = true;
 })
