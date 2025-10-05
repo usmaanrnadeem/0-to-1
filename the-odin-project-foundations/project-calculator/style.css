@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 body {
     display: flex;
     justify-content: center;
     margin:100px;
-    font-family: "Inter", sans-serif;
-    font-size: larger;
+    font-family: "Orbitron", sans-serif;
     font-weight: bold;
     background-color:#111827;
 }
@@ -14,22 +13,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    outline: 0.1em solid black;
-    background-color: #FFFFFF;
-    border-radius: 20px;
-    height: 400px;
-    margin-top: 160px;
+    width: 380px;
+    outline: 0.1em solid white;
+    background-color: black;
+    height: 600px;
+    margin-top: 60px;
 }
 
 .display {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 50px;
+    width: 300px;
+    height: 75px;
     outline: 0.1em solid black;
-    margin: 20px;
+    margin: 30px;
     text-align: center;
     background-color: #111827;
     color: #F9FAFB;
@@ -37,26 +35,27 @@ body {
 
 .buttonSection {
     display: flex;
-    width: 172px;
+    width: 258px;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 4px;
-    margin-top: 28px;
+    gap: 6px;
+    margin-top: 24px;
 }
 
 button {
     border: none;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    height: 44px;
+    height: 66px;
 }
 
 .num, .operation {
-    width: 40px;
+    width: 60px;
 }
 
 .num {
-    background-color: #F3F4F6;
+    background-color: black;
+    color: #D1D5DB;
+    border: 1px solid #2A2A2A; 
 }
 
 .operation {
@@ -64,22 +63,28 @@ button {
 }
 
 .clear {
-    width: 40px;
+    width: 60px;
     background-color: #F43F5E;
 }
 
 .decimal {
-    width: 40px;
+    width: 60px;
     background-color: turquoise;
+    font-weight: bold;
 }
 
 .del {
-    width: 256px;
+    width: 126px;
     background-color: red ;
+    font-size: 15px;
 }
 
 .equals {
-    width: 256px;
-    margin-bottom: 20px;
+    width: 126px;
     background-color: #10B981 ;
+}
+
+.num, .clear, .decimal, .operation, .equals, .del {
+    font-family: "Orbitron", sans-serif;
+    font-size: 20px;
 }

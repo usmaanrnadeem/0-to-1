@@ -61,7 +61,8 @@ const display = document.querySelector(".display");
 const operations = document.querySelectorAll(".operation");
 const equals = document.querySelector(".equals");
 const clearBtn = document.querySelector(".clear");
-const decimal = document.querySelector(".decimal")
+const decimal = document.querySelector(".decimal");
+const del = document.querySelector(".del");
 
 digits.forEach(btn => {
     btn.addEventListener("click", e => {
@@ -73,6 +74,10 @@ digits.forEach(btn => {
             firstDigitAfterOperation = false;
             numberTwo = "fill me"
             helper = true
+        }
+
+        if (operator == null) {
+            clear();
         }
 
         if (firstDigitAfterEquals == true && helper == false) {
@@ -87,31 +92,30 @@ digits.forEach(btn => {
 
 operations.forEach(btn => {
     btn.addEventListener("click", e => {
-        if (!numberOne) {
-            numberOne = display.textContent
+        if (!firstDigitAfterOperation) {
+            if (!numberOne) {
+                numberOne = display.textContent
+            }
+            else if (numberOne !== display.textContent) {
+                numberTwo = display.textContent
+            }
+            
+            if (numberTwo == "fill me") {
+                numberTwo = display.textContent;
+            }
+    
+            if (numberOne && numberTwo && operator) {
+                [numberOne, numberTwo, operator] = operate(numberOne,numberTwo,operator);
+                operator = e.target.textContent;
+            }
+            firstDigitAfterOperation = true; 
+    
+            operator = e.target.textContent
         }
-        else if (numberOne !== display.textContent) {
-            numberTwo = display.textContent
-        }
-        
-        if (numberTwo == "fill me") {
-            numberTwo = display.textContent;
-        }
-
-        if (numberOne && numberTwo && operator) {
-            [numberOne, numberTwo, operator] = operate(numberOne,numberTwo,operator);
-            operator = e.target.textContent;
-        }
-        firstDigitAfterOperation = true; 
-
-        operator = e.target.textContent
     })
 })
 
 equals.addEventListener("click", () => {
-    console.log(numberOne)
-    console.log(numberTwo)
-    console.log(answer)
     if (numberOne && numberTwo && operator) {
         if (numberTwo == "fill me") {
             numberTwo = display.textContent;
@@ -129,6 +133,8 @@ equals.addEventListener("click", () => {
     numberTwo = "fill me";
 
     firstDigitAfterEquals = true;
+
+    operator = null;
 })
 
 clearBtn.addEventListener("click", () => clear())
@@ -160,3 +166,21 @@ decimal.addEventListener("click", () => {
 })
 
 
+del.addEventListener("click", () => {
+    if (display.textContent && !firstDigitAfterEquals && !firstDigitAfterOperation) {
+        display.textContent = display.textContent.slice(0,-1);
+    }
+})
+
+document.addEventListener("keydown", (e) => {
+    
+    const numButton = Array.from(digits).find(btn => btn.textContent === e.key);
+    const opButton = Array.from(operations).find(btn => btn.textContent === e.key);
+    
+    if (numButton) numButton.click();
+    else if (opButton) opButton.click();
+    else if (e.key === "Enter") document.querySelector(".equals").click();
+    else if (e.key === "Backspace") document.querySelector(".del").click();
+    else if (e.key === "Escape") document.querySelector(".clear").click();
+    else if (e.key === ".") document.querySelector(".decimal").click();
+})
