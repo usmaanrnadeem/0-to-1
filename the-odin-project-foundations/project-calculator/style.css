@@ -73,6 +73,11 @@ button {
     background-color: turquoise;
 }
 
+.del {
+    width: 256px;
+    background-color: red ;
+}
+
 .equals {
     width: 256px;
     margin-bottom: 20px;
