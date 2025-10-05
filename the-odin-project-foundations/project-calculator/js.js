@@ -61,9 +61,13 @@ const display = document.querySelector(".display");
 const operations = document.querySelectorAll(".operation");
 const equals = document.querySelector(".equals");
 const clearBtn = document.querySelector(".clear");
+const decimal = document.querySelector(".decimal")
 
 digits.forEach(btn => {
     btn.addEventListener("click", e => {
+
+        helper = true;
+
         if (firstDigitAfterOperation == true) {
             display.textContent = "";
             firstDigitAfterOperation = false;
@@ -73,7 +77,6 @@ digits.forEach(btn => {
 
         if (firstDigitAfterEquals == true && helper == false) {
             clear()
-            console.log('Problem')
         }
 
         helper = false;
@@ -129,5 +132,31 @@ equals.addEventListener("click", () => {
 })
 
 clearBtn.addEventListener("click", () => clear())
+
+decimal.addEventListener("click", () => {
+
+    if (!display.textContent.includes(".")) {
+
+        helper = true;
+    
+        if (firstDigitAfterOperation == true) {
+            display.textContent = "";
+            firstDigitAfterOperation = false;
+            numberTwo = "fill me"
+            helper = true
+        }
+
+        if (firstDigitAfterEquals == true && helper == false) {
+            clear()
+        }
+
+        helper = false;
+        
+        display.textContent += '.'
+
+    }
+
+    
+})
 
 
