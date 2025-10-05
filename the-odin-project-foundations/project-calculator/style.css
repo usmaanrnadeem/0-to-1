@@ -64,12 +64,17 @@ button {
 }
 
 .clear {
-    width: 84px;
-    background-color: #10B981;
+    width: 40px;
+    background-color: #F43F5E;
+}
+
+.decimal {
+    width: 40px;
+    background-color: turquoise;
 }
 
 .equals {
     width: 256px;
     margin-bottom: 20px;
-    background-color: #F43F5E;
+    background-color: #10B981 ;
 }
