@@ -65,6 +65,7 @@ const decimal = document.querySelector(".decimal");
 const del = document.querySelector(".del");
 
 digits.forEach(btn => {
+   
     btn.addEventListener("click", e => {
 
         helper = true;
@@ -91,7 +92,9 @@ digits.forEach(btn => {
 })
 
 operations.forEach(btn => {
+    
     btn.addEventListener("click", e => {
+        
         if (!firstDigitAfterOperation) {
             if (!numberOne) {
                 numberOne = display.textContent
@@ -116,6 +119,7 @@ operations.forEach(btn => {
 })
 
 equals.addEventListener("click", () => {
+    
     if (numberOne && numberTwo && operator) {
         if (numberTwo == "fill me") {
             numberTwo = display.textContent;
@@ -159,10 +163,7 @@ decimal.addEventListener("click", () => {
         helper = false;
         
         display.textContent += '.'
-
     }
-
-    
 })
 
 
